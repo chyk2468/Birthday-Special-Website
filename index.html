@@ -7,7 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app"></div>
+    <header class="app-header">
+        <h1>My Birthday Effects</h1>
+    </header>
+
+    <main class="hero-section">
+        <div class="container">
+            <h2>Give Your Photos a Birthday Magic!</h2>
+            <p>Upload your memories and apply stunning visual effects.</p>
+            
+            <section class="upload-area" id="upload-area">
+                <input type="file" id="photo-upload" accept="image/*" hidden>
+                <div class="upload-card">
+                    <p>Click to upload or drag & drop</p>
+                </div>
+            </section>
+
+            <section class="preview-container" id="preview-container">
+                <!-- Image canvas will be here -->
+            </section>
+        </div>
+    </main>
+
     <script src="main.js"></script>
 </body>
 </html>
