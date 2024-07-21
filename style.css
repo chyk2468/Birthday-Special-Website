@@ -23,3 +23,42 @@ body {
     color: var(--text-main);
     min-height: 100vh;
 }
+
+.app-header {
+    padding: 1.5rem 2rem;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.hero-section {
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.upload-area {
+    margin: 3rem auto;
+    max-width: 600px;
+}
+
+.upload-card {
+    background: var(--card-bg);
+    border: 2px dashed var(--border);
+    border-radius: 1rem;
+    padding: 4rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-card:hover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+}
