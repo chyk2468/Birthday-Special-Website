@@ -19,15 +19,22 @@ function handleImage(file) {
     reader.onload = (event) => {
         const img = new Image();
         img.onload = () => {
+             // Robust rendering logic
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
-            canvas.width = img.width;
-            canvas.height = img.height;
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
             ctx.drawImage(img, 0, 0);
             previewContainer.innerHTML = '';
             previewContainer.appendChild(canvas);
         };
+        img.onerror = () => console.error("Error loading image");
         img.src = event.target.result;
+        
+        // Ensure onload triggers if cached (rare for FileReader but good practice)
+        if (img.complete && img.naturalWidth !== 0) {
+            img.onload();
+        }
     };
     reader.readAsDataURL(file);
 }
