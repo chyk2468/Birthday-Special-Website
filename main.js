@@ -12,11 +12,22 @@ photoUpload.addEventListener('change', (e) => {
     }
 });
 
+const previewContainer = document.getElementById('preview-container');
+
 function handleImage(file) {
     const reader = new FileReader();
     reader.onload = (event) => {
-        console.log("Image loaded", event.target.result);
-        // Next commit: render to canvas
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            previewContainer.innerHTML = '';
+            previewContainer.appendChild(canvas);
+        };
+        img.src = event.target.result;
     };
     reader.readAsDataURL(file);
 }
