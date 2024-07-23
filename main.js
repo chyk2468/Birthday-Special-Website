@@ -53,12 +53,24 @@ function applyGrayscale(ctx, width, height) {
     ctx.putImageData(imageData, 0, 0);
 }
 
+function applyNeon(canvas, ctx) {
+    ctx.filter = 'contrast(1.5) brightness(1.2) saturate(2)';
+    ctx.drawImage(canvas, 0, 0);
+    ctx.filter = 'none';
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = '#6366f1';
+}
 const effectsGrid = document.getElementById('effects-grid');
+
 effectsGrid.addEventListener('click', (e) => {
     const card = e.target.closest('.effect-card');
     if (!card) return;
     const effect = card.dataset.effect;
-    console.log("Applying effect:", effect);
-    // effect application logic here
+    const canvas = previewContainer.querySelector('canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    if (effect === 'neon') applyNeon(canvas, ctx);
+    else if (effect === 'grayscale') applyGrayscale(ctx, canvas.width, canvas.height);
 });
 
