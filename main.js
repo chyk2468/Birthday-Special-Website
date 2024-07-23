@@ -62,15 +62,19 @@ function applyNeon(canvas, ctx) {
 }
 const effectsGrid = document.getElementById('effects-grid');
 
+function applyEffect(canvas, effect) {
+    const ctx = canvas.getContext('2d');
+    switch (effect) {
+        case 'neon': applyNeon(canvas, ctx); break;
+        case 'grayscale': applyGrayscale(ctx, canvas.width, canvas.height); break;
+        // add more cases as they're built...
+    }
+}
+
 effectsGrid.addEventListener('click', (e) => {
     const card = e.target.closest('.effect-card');
     if (!card) return;
-    const effect = card.dataset.effect;
     const canvas = previewContainer.querySelector('canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    
-    if (effect === 'neon') applyNeon(canvas, ctx);
-    else if (effect === 'grayscale') applyGrayscale(ctx, canvas.width, canvas.height);
+    if (canvas) applyEffect(canvas, card.dataset.effect);
 });
 
