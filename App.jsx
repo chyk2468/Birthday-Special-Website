@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Header = () => (
     <header className="app-header">
@@ -6,20 +6,31 @@ const Header = () => (
     </header>
 );
 
-const Hero = () => (
-    <main className="hero-section">
-        <div className="container">
-            <h2>Give Your Photos a Birthday Magic!</h2>
-            <p>Upload your memories and apply stunning visual effects.</p>
-        </div>
-    </main>
-);
+const ImageUploader = ({ onUpload }) => {
+    return (
+        <section className="upload-area">
+            <div className="upload-card" onClick={() => document.getElementById('photo-upload').click()}>
+                <input type="file" id="photo-upload" accept="image/*" hidden onChange={(e) => onUpload(e.target.files[0])} />
+                <p>Click to upload or drag & drop</p>
+            </div>
+        </section>
+    );
+};
 
 function App() {
+  const [image, setImage] = useState(null);
+
+  const handleUpload = (file) => {
+      setImage(file);
+      console.log("Image state updated:", file.name);
+  };
+
   return (
     <div className="App">
       <Header />
-      <Hero />
+      <div className="container">
+          <ImageUploader onUpload={handleUpload} />
+      </div>
     </div>
   );
 }
