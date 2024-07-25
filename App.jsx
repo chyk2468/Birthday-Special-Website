@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Header = () => (
     <header className="app-header">
@@ -37,19 +37,40 @@ const EffectSelector = ({ selectedEffect, onSelect }) => {
     );
 };
 
+const ImageCanvas = ({ image, effect }) => {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+        if (!image || !canvasRef.current) return;
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.onload = () => {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            // applyEffect(canvas, effect); // Simulated
+        };
+        img.src = URL.createObjectURL(image);
+    }, [image, effect]);
+
+    return (
+        <section className="preview-container">
+            <canvas ref={canvasRef} />
+        </section>
+    );
+};
+
 function App() {
   const [image, setImage] = useState(null);
   const [effect, setEffect] = useState('original');
-
-  const handleUpload = (file) => {
-      setImage(file);
-  };
 
   return (
     <div className="App">
       <Header />
       <div className="container">
-          <ImageUploader onUpload={handleUpload} />
+          <ImageUploader onUpload={setImage} />
+          {image && <ImageCanvas image={image} effect={effect} />}
           <EffectSelector selectedEffect={effect} onSelect={setEffect} />
       </div>
     </div>
