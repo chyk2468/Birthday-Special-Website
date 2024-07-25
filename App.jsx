@@ -17,12 +17,32 @@ const ImageUploader = ({ onUpload }) => {
     );
 };
 
+const EffectSelector = ({ selectedEffect, onSelect }) => {
+    const effects = ['original', 'cartoon', 'sketch', 'neon'];
+    return (
+        <section className="effects-selector">
+            <h3>Select an Effect</h3>
+            <div className="effects-grid">
+                {effects.map(effect => (
+                    <div 
+                        key={effect} 
+                        className={`effect-card ${selectedEffect === effect ? 'active' : ''}`}
+                        onClick={() => onSelect(effect)}
+                    >
+                        <span>{effect.charAt(0).toUpperCase() + effect.slice(1)}</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
 function App() {
   const [image, setImage] = useState(null);
+  const [effect, setEffect] = useState('original');
 
   const handleUpload = (file) => {
       setImage(file);
-      console.log("Image state updated:", file.name);
   };
 
   return (
@@ -30,6 +50,7 @@ function App() {
       <Header />
       <div className="container">
           <ImageUploader onUpload={handleUpload} />
+          <EffectSelector selectedEffect={effect} onSelect={setEffect} />
       </div>
     </div>
   );
