@@ -65,11 +65,16 @@ function App() {
   const [image, setImage] = useState(null);
   const [effect, setEffect] = useState('original');
 
+  const onImageChange = (file) => {
+      setImage(file);
+      setEffect('original'); // Reset on new image
+  };
+
   return (
     <div className="App">
       <Header />
       <div className="container">
-          <ImageUploader onUpload={setImage} />
+          <ImageUploader onUpload={onImageChange} />
           {image && <ImageCanvas image={image} effect={effect} />}
           <EffectSelector selectedEffect={effect} onSelect={setEffect} />
       </div>
