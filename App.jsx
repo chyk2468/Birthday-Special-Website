@@ -48,11 +48,14 @@ const ImageCanvas = ({ image, effect }) => {
         const ctx = canvas.getContext('2d');
         const img = new Image();
         img.onload = () => {
-             canvas.width = img.width;
-             canvas.height = img.height;
+             const dpr = window.devicePixelRatio || 1;
+             canvas.width = img.width * dpr;
+             canvas.height = img.height * dpr;
+             canvas.style.width = `${img.width}px`;
+             canvas.style.height = `${img.height}px`;
+             ctx.scale(dpr, dpr);
              ctx.drawImage(img, 0, 0);
-             // Apply effects logic...
-             setTimeout(() => setIsProcessing(false), 500); // Simulate processing time
+             setTimeout(() => setIsProcessing(false), 500);
         };
         img.src = URL.createObjectURL(image);
     }, [image, effect]);
