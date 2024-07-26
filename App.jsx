@@ -46,10 +46,18 @@ const ImageCanvas = ({ image, effect }) => {
         const ctx = canvas.getContext('2d');
         const img = new Image();
         img.onload = () => {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
-            // applyEffect(canvas, effect); // Simulated
+             canvas.width = img.width;
+             canvas.height = img.height;
+             ctx.drawImage(img, 0, 0);
+             if (effect === 'cartoon') {
+                  ctx.filter = 'contrast(1.2) saturate(1.5) blur(1px)';
+                  ctx.drawImage(canvas, 0, 0);
+                  ctx.filter = 'none';
+             } else if (effect === 'sketch') {
+                  ctx.filter = 'grayscale(1) contrast(3) invert(1)';
+                  ctx.drawImage(canvas, 0, 0);
+                  ctx.filter = 'none';
+             }
         };
         img.src = URL.createObjectURL(image);
     }, [image, effect]);
