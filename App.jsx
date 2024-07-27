@@ -60,10 +60,18 @@ const ImageCanvas = ({ image, effect }) => {
         img.src = URL.createObjectURL(image);
     }, [image, effect]);
 
+    const downloadProject = () => {
+        const link = document.createElement('a');
+        link.download = 'birthday-effect.png';
+        link.href = canvasRef.current.toDataURL();
+        link.click();
+    };
+
     return (
         <section className="preview-container">
             {isProcessing && <div className="spinner">Applying magic...</div>}
             <canvas ref={canvasRef} style={{ display: isProcessing ? 'none' : 'block' }} />
+            {!isProcessing && <button onClick={downloadProject}>Download Magic ✨</button>}
         </section>
     );
 };
