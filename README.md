@@ -1,19 +1,45 @@
 # Birthday Photo Effects
 
-A React and Vite web app for adding visual effects to birthday photos. The interface uses browser canvas processing and a dark navy theme with restrained indigo accents.
+**Apply visual effects to photos in a simple React interface.**
 
-**Stack:** React, Vite, JavaScript, HTML Canvas, CSS
+[![GitHub](https://img.shields.io/badge/GitHub-Source-24292f?logo=github)](https://github.com/chyk2468/Birthday-Special-Website)
 
-![Birthday Photo Effects workflow](docs/readme-architecture.svg)
+## 1. Project Title & Tagline
 
-## Workflow
+Apply visual effects to photos in a simple React interface.
 
-1. Upload or select an image.
-2. Choose one of the effects supported by the interface.
-3. Process the image with the browser canvas.
-4. Preview and download the result.
+## 2. Problem Statement
 
-## Run locally
+Adding a playful effect to a birthday photo can require a separate editor. This project provides a browser interface for applying supported effects and exporting the result.
+
+## 3. Project Preview
+
+Add a real screenshot or short GIF of the current interface and a before/after result.
+
+[Open interactive architecture](architecture.html)
+
+## 4. Overview
+
+The project accepts source content, runs the configured workflow, and presents a result for review. The diagram below summarises the main stages.
+
+## 5. Key Features
+
+- Upload or select an image.
+- Choose a supported visual effect.
+- Process the image with browser canvas operations.
+- Preview and download the result.
+
+## 6. Architecture / Workflow
+
+![Animated Birthday Photo Effects workflow](docs/animated-workflow.svg)
+
+Open the [interactive architecture explorer](architecture.html) to select a stage and inspect its role.
+
+## 7. Tech Stack
+
+React, Vite, JavaScript, HTML Canvas, CSS
+
+## 8. Installation & Setup
 
 ```bash
 git clone https://github.com/chyk2468/Birthday-Special-Website.git
@@ -22,15 +48,28 @@ npm install
 npm run dev
 ```
 
-Use the local Vite URL shown in the terminal.
+## 9. Usage
 
-## Files
+Open the local Vite URL, choose a photo, apply one of the available effects, preview the result, and download the edited image.
+
+## 10. Project Structure
 
 - `App.jsx`: application interface and interactions
 - `main.js`: app entry point
-- `style.css`: visual theme and responsive layout
+- `style.css`: styling and layout
 - `package.json`: scripts and dependencies
 
-## Notes
+## 11. Results & Demo
 
-Large images may take longer to process on slower devices. Make sure you have permission to edit and share the photos you upload.
+Add a before/after screenshot or GIF showing one supported effect and the export flow.
+
+## 12. Future Enhancements
+
+- Add more configurable effects.
+- Improve mobile upload and preview interactions.
+- Show image dimensions and export options.
+- Add tests for image formats and large inputs.
+
+## 13. License
+
+Check the licences for the source code and any included visual assets.
