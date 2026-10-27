@@ -1,21 +1,36 @@
-# My Birthday Effects App 🎂✨
+# Birthday Photo Effects
 
-Transform your birthday photos with stunning visual effects in seconds!
+A React and Vite web app for adding visual effects to birthday photos. The interface uses browser canvas processing and a dark navy theme with restrained indigo accents.
 
-## Features
-- 🚀 **Fast Upload**: Drag and drop your favorite birthday shots.
-- 🎨 **Visual Effects**: Choose from Cartoon, Sketch, Neon, and more.
-- 📱 **Responsive**: Works perfectly on mobile, tablet, and desktop.
-- 💾 **Instant Download**: Save your magic creations with one click.
+**Stack:** React, Vite, JavaScript, HTML Canvas, CSS
 
-## Tech Stack
-- **React** (Vite)
-- **HTML5 Canvas** (Pixel manipulation)
-- **Vanilla CSS** (Glassmorphism design)
+![Birthday Photo Effects workflow](docs/readme-architecture.svg)
 
-## Getting Started
-1. Clone the repo
-2. Run `npm install`
-3. Launch with `npm run dev`
+## Workflow
 
-Enjoy the magic! ✨
+1. Upload or select an image.
+2. Choose one of the effects supported by the interface.
+3. Process the image with the browser canvas.
+4. Preview and download the result.
+
+## Run locally
+
+```bash
+git clone https://github.com/chyk2468/Birthday-Special-Website.git
+cd Birthday-Special-Website
+npm install
+npm run dev
+```
+
+Use the local Vite URL shown in the terminal.
+
+## Files
+
+- `App.jsx`: application interface and interactions
+- `main.js`: app entry point
+- `style.css`: visual theme and responsive layout
+- `package.json`: scripts and dependencies
+
+## Notes
+
+Large images may take longer to process on slower devices. Make sure you have permission to edit and share the photos you upload.
